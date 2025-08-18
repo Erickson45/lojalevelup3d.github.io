@@ -449,22 +449,31 @@
             .mission-section, .cta-section { margin-left: 0; margin-right: 0; width: 100%; }
             .footer-content { flex-direction: column; align-items: center; text-align: center; }
 
-            /* AJUSTES DE RESPONSIVIDADE PARA O MODAL */
+            /* AJUSTES DE RESPONSIVIDADE PARA O MODAL (REFINADO) */
             .modal-content {
                 width: 90%;
-                padding: 25px;
-                max-height: 90vh;
+                padding: 20px; /* Um pouco menos de padding */
+                max-height: 85vh; /* Um pouco menor na altura */
                 overflow-y: auto;
             }
             .modal-body {
                 flex-direction: column;
                 text-align: center;
+                gap: 15px; /* Diminuir o espaço entre imagem e texto */
             }
             .modal-body .product-info h3 {
-                font-size: 1.8rem;
+                font-size: 1.5rem; /* Título menor */
+            }
+            #modal-product-full-desc {
+                font-size: 0.9rem; /* Garantir que a descrição seja legível */
+                line-height: 1.6;
             }
             .modal-body .product-info .modal-price {
-                font-size: 1.6rem;
+                font-size: 1.4rem; /* Preço menor */
+            }
+            .modal-content .btn {
+                padding: 0.7rem 1.5rem; /* Botão um pouco menor */
+                font-size: 0.9rem;
             }
         }
     </style>
