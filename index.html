@@ -139,7 +139,7 @@
         /* --- Seta "Role para baixo" --- */
         .scroll-down-arrow {
             position: absolute;
-            bottom: 15vh; /* POSIÇÃO FINALMENTE AJUSTADA */
+            bottom: 15vh;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -175,7 +175,6 @@
             50% { opacity: 1; transform: translateY(0); }
             100% { opacity: 0; transform: translateY(10px); }
         }
-
 
         /* --- Título de Seção Melhorado --- */
         .section-title {
@@ -483,28 +482,28 @@
         .modal-body .product-images img.active { border: 2px solid #44CFCB; }
         .modal-body .product-info { flex: 1.5; display: flex; flex-direction: column; justify-content: center; }
         .modal-body .product-info h3 { color: #44CFCB; font-size: 2.2rem; margin-top: 0; }
+        #modal-product-full-desc { word-wrap: break-word; /* Garante que o texto não vai vazar */ }
         .modal-body .product-info .modal-price { font-size: 2rem; color: #FFD700; font-weight: 700; margin: 10px 0 20px; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-        /* --- Responsividade --- */
+        /* --- Responsividade Média (Tablets) --- */
         @media (max-width: 768px) {
             .navbar .nav-links a { font-size: 1rem; }
             .navbar .nav-links { gap: 1.5rem; }
             .hero h1 { font-size: 2.5rem; }
             .hero p { font-size: 1.1rem; }
-            .section-title { font-size: 1.5rem; margin-top: 5rem; }
+            .section-title { font-size: 1.8rem; margin-top: 5rem; }
             .container { padding: 1rem; gap: 1.5rem; flex-direction: column; }
             .product-card { width: 100%; max-width: 350px; }
             .info p { min-height: auto; }
-            .mission-section, .cta-section { margin-left: 0; margin-right: 0; width: 100%; }
+            .mission-section, .cta-section { padding: 2rem 1.5rem; }
             .footer-content { flex-direction: column; align-items: center; text-align: center; }
 
-            /* AJUSTE FINAL DE TAMANHO PARA O MODAL */
             .modal-content {
                 width: 90%;
                 padding: 15px;
-                max-height: 75vh;
+                max-height: 80vh;
                 overflow-y: auto;
             }
             .modal-body {
@@ -513,19 +512,28 @@
                 gap: 15px;
             }
             .modal-body .product-info h3 {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
             #modal-product-full-desc {
                 font-size: 0.9rem;
                 line-height: 1.6;
             }
             .modal-body .product-info .modal-price {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
             .modal-content .btn {
                 padding: 0.7rem 1.5rem;
                 font-size: 0.9rem;
             }
+        }
+
+        /* --- NOVA CAMADA DE RESPONSIVIDADE (Celulares Pequenos) --- */
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .section-title { font-size: 1.5rem; }
+            .mission-section h2, .cta-section h2 { font-size: 1.8rem; }
+            .mission-section, .cta-section { padding: 2rem 1rem; }
         }
     </style>
 </head>
