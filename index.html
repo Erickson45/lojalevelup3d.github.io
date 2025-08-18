@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LevelUp3D - Loja Oficial</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Audiowide&family=Grenze+Gotisch:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
@@ -17,23 +20,26 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         /* --- Menu de Navegação --- */
         .navbar {
             width: 100%;
             background-color: #1A1A2E;
-            padding: 1.5rem 2.5rem;
+            padding: 1.5rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            position: sticky;
+            position: sticky; /* A propriedade correta para que o menu grude no topo */
             top: 0;
             z-index: 100;
             flex-wrap: wrap;
+            transition: background-color 0.4s ease;
         }
 
+        /* Ajuste do logo para evitar cortes */
         .navbar .logo {
             font-size: 2.5rem;
             font-weight: 700;
@@ -43,6 +49,10 @@
             -webkit-text-fill-color: transparent;
             text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
             transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-left: 2rem;
         }
 
         .navbar .logo:hover {
@@ -50,13 +60,15 @@
         }
 
         .navbar .logo i {
-            margin-right: 0.5rem;
+            margin-right: 0;
         }
 
+        /* Efeito de hover aprimorado no menu */
         .navbar .nav-links {
             display: flex;
             gap: 1.5rem;
             flex-wrap: wrap;
+            padding-right: 1.5rem;
         }
 
         .navbar .nav-links a {
@@ -64,33 +76,60 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 1.1rem;
+            position: relative;
             transition: color 0.3s;
         }
 
-        .navbar .nav-links a:hover {
-            color: #8A2BE2;
+        .navbar .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 2px;
+            background-color: #8A2BE2;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .navbar .nav-links a:hover::after {
+            transform: scaleX(1);
         }
 
         .navbar .nav-links .active {
             color: #44CFCB;
             font-weight: 600;
-            border-bottom: 2px solid #44CFCB;
+        }
+
+        .navbar .nav-links .active::after {
+            background-color: #44CFCB;
+            transform: scaleX(1);
         }
 
         .header {
             width: 100%;
             padding: 5rem 1.5rem 3rem;
             text-align: center;
+            min-height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
+        /* Estilo para o título "Bem-Vindo!" */
         .header h1 {
-            margin: 0;
-            font-size: 3.5rem;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 3rem;
             font-weight: 700;
-            letter-spacing: 2px;
-            color: #8A2BE2;
+            background: linear-gradient(45deg, #44CFCB, #FFD700);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(68, 207, 203, 0.5);
+            margin: 0;
         }
-        
+
         /* Layout dos cards para telas grandes (PC) */
         .container {
             display: flex;
@@ -112,6 +151,11 @@
             animation: fadeInUp 1s ease-out forwards;
             border: 2px solid transparent;
         }
+
+        /* Animação com delay para cada card */
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.3s; }
+        .product-card:nth-child(3) { animation-delay: 0.5s; }
 
         .product-card:hover {
             transform: translateY(-10px) scale(1.02);
@@ -218,6 +262,7 @@
             margin-bottom: 2rem;
         }
 
+        /* --- Melhoria do Rodapé --- */
         footer {
             margin-top: 5rem;
             padding: 2rem;
@@ -231,6 +276,29 @@
         footer p {
             font-size: 1rem;
             color: #A0A0A0;
+            margin-bottom: 1rem;
+        }
+
+        .whatsapp-contact {
+            background-color: #25D366;
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .whatsapp-contact:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .whatsapp-contact i {
+            margin-right: 0.5rem;
         }
 
         footer .social a {
@@ -297,7 +365,7 @@
         .close-btn:hover {
             color: #8A2BE2;
         }
-        
+
         .modal-header {
             text-align: center;
         }
@@ -314,7 +382,7 @@
             flex-direction: column;
             gap: 10px;
         }
-        
+
         .modal-body .product-images img {
             width: 100%;
             border-radius: 10px;
@@ -360,25 +428,25 @@
         /* --- Responsividade --- */
         @media (max-width: 768px) {
             .navbar {
-                padding: 1rem 1.5rem;
+                padding: 1rem 1rem;
             }
             .navbar .logo {
                 font-size: 2rem;
+                padding-left: 1rem;
             }
             .navbar .nav-links a {
                 font-size: 0.9rem;
-                margin-left: 1rem;
             }
             .header h1 {
-                font-size: 2.5rem;
+                font-size: 1.8rem;
             }
             .container {
                 padding: 1rem;
                 gap: 1.5rem;
-                flex-direction: column; /* Um abaixo do outro em telas menores */
+                flex-direction: column;
             }
             .product-card {
-                width: 100%; /* Ocupa a largura total */
+                width: 100%;
                 max-width: none;
             }
             .reviews-section {
@@ -388,6 +456,25 @@
             .reviews-section h2 {
                 font-size: 1.8rem;
             }
+        }
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Novos estilos para o botão interativo */
+        .btn.interactive-btn {
+            background: linear-gradient(45deg, #8A2BE2, #44CFCB);
+            border: none;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn.interactive-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.2);
         }
     </style>
 </head>
@@ -402,7 +489,7 @@
     </nav>
 
     <div class="header">
-        <h1>Seu Próximo Item Favorito Está Aqui!</h1>
+        <h1>Bem-Vindo!</h1>
     </div>
 
     <div class="container">
@@ -413,10 +500,10 @@
             </div>
             <div class="info">
                 <h2>Caixa Misteriosa</h2>
-                <p class="product-description">Desafie a sorte! Uma surpresa geek, anime ou RPG escolhida a dedo. O que será que te espera?</p>
+                <p class="product-description">Pronto para a aventura? Uma caixa repleta de tesouros 💎 do universo geek, anime ou RPG. Descubra o que o destino reservou para você!</p>
                 <p class="price">R$ 45,00</p>
                 <a href="#" class="btn details-btn" data-product-id="mystery-box">Detalhes</a>
-                <a href="https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20a%20Caixa%20Misteriosa!" class="btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-shopping-cart"></i> Comprar</a>
+                <a href="https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20a%20a%20Caixa%20Misteriosa!" class="btn" target="_blank" rel="noopener noreferrer"> Comprar</a>
             </div>
         </div>
 
@@ -426,10 +513,10 @@
             </div>
             <div class="info">
                 <h2>Chaveiro Geek</h2>
-                <p class="product-description">Dê um upgrade nas suas chaves! Chaveiros personalizados a partir de R$ 5. O que você está esperando?</p>
+                <p class="product-description">Leve seu personagem favorito para qualquer lugar! Chaveiros incríveis e personalizados, perfeitos para dar um toque especial no seu dia a dia. 🎮✨</p>
                 <p class="price">A partir de R$ 5,00</p>
                 <a href="#" class="btn details-btn" data-product-id="keychain">Detalhes</a>
-                <a href="https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20um%20Chaveiro%20Geek!" class="btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-shopping-cart"></i> Comprar</a>
+                <a href="https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20um%20Chaveiro%20Geek!" class="btn" target="_blank" rel="noopener noreferrer"> Comprar</a>
             </div>
         </div>
 
@@ -439,9 +526,9 @@
             </div>
             <div class="info">
                 <h2>Produto Personalizado</h2>
-                <p class="product-description">Transforme sua ideia em realidade! Um item feito do zero, especialmente para você. Diga-nos o que procura!</p>
+                <p class="product-description">Sua imaginação é o limite! Deixe-nos transformar a sua ideia mais criativa em uma peça única de alta qualidade. Conte-nos o que você sonha em criar! 💖</p>
                 <a href="#" class="btn details-btn" data-product-id="custom">Detalhes</a>
-                <a href="https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20produto%20personalizado!" class="btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-star"></i> Personalizar</a>
+                <a href="https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20produto%20personalizado!" class="btn" target="_blank" rel="noopener noreferrer"> Personalizar</a>
             </div>
         </div>
 
@@ -450,11 +537,14 @@
     <div class="reviews-section">
         <h2>O que nossos clientes dizem?</h2>
         <p>Sua opinião é a nossa maior conquista. Deixe sua avaliação sobre nosso atendimento e produtos!</p>
-        <a href="https://docs.google.com/forms/d/1tk7XZMUkzacke-bGOBATnD-g7gw-7xe6zLMFHq2SAF8/edit" rel="noopener noreferrer"><i class="fas fa-comment-dots"></i> Avaliar Atendimento</a>
+        <a href="https://docs.google.com/forms/u/2/create?usp=forms_home&ths=true" class="btn interactive-btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-comment-dots"></i> Avaliar Atendimento</a>
     </div>
 
     <footer>
-        <p>Tem dúvidas? Fale conosco pelo WhatsApp! <br> <a href="https://wa.me/5584921555670" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> 84 92155-5670</a></p>
+        <p>Tem dúvidas? Fale conosco!</p>
+        <a href="https://wa.me/5584921555670" class="whatsapp-contact" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-whatsapp"></i> 84 92155-5670
+        </a>
         <div class="social">
             <a href="https://www.instagram.com/levelup3d45" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i> Instagram @levelup3d45</a>
         </div>
@@ -479,22 +569,22 @@
     <script>
         const products = {
             'mystery-box': {
-                title: 'Caixa Misteriosa',
-                description: 'A emoção de uma surpresa! Nossa Caixa Misteriosa contém itens geeks de alta qualidade, como colecionáveis, action figures, chaveiros e outros produtos exclusivos. Perfeito para quem ama ser surpreendido e descobrir novos tesouros!',
+                title: 'Caixa Misteriosa 🎁',
+                description: 'A emoção de uma surpresa! Nossa <b>Caixa Misteriosa</b> é a escolha perfeita para quem ama o universo geek. Cada caixa contém uma seleção exclusiva de itens de alta qualidade, como colecionáveis raros, action figures, chaveiros temáticos e outros produtos incríveis feitos em impressão 3D. 🎲 Anime, RPG ou cultura pop, o que será que te espera? 💫',
                 price: 'R$ 45,00',
-                images: ['caixa.jpg', 'chaveiros.jpg'],
-                whatsappLink: 'https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20a%20Caixa%20Misteriosa!'
+                images: ['caixa.jpg'],
+                whatsappLink: 'https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20a%20a%20Caixa%20Misteriosa!'
             },
             'keychain': {
-                title: 'Chaveiro Geek',
-                description: 'Deixe suas chaves com a sua cara! Nossos chaveiros são feitos com impressão 3D de alta precisão e estão disponíveis em diversos designs de animes, games e cultura pop. Resistentes e cheios de estilo.',
+                title: 'Chaveiro Geek 🔑',
+                description: 'Dê um upgrade nas suas chaves! Nossos <b>Chaveiros Geek</b> são feitos com impressão 3D de alta precisão e estão disponíveis em uma variedade de designs inspirados nos seus animes e games favoritos. Feitos para durar, são resistentes e cheios de estilo. Adicione um toque da sua paixão em cada detalhe! 🌟',
                 price: 'A partir de R$ 5,00',
                 images: ['chaveiros.jpg'],
                 whatsappLink: 'https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20um%20Chaveiro%20Geek!'
             },
             'custom': {
-                title: 'Produto Personalizado',
-                description: 'Tem uma ideia em mente? Nós a tornamos realidade! Um item feito do zero, especialmente para você. Diga-nos o que procura!',
+                title: 'Produto Personalizado 🛠️',
+                description: 'Transforme sua ideia em realidade! 🖌️ Se você tem um personagem, símbolo ou objeto em mente, nós podemos criá-lo do zero especialmente para você. Com a nossa tecnologia de impressão 3D, garantimos que cada detalhe será perfeito. Conte-nos o que você busca e vamos construir essa obra de arte juntos! ✨',
                 price: '',
                 images: ['personalizados.jpg'],
                 whatsappLink: 'https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20produto%20personalizado!',
@@ -513,8 +603,8 @@
                 const product = products[productId];
 
                 document.getElementById('modal-product-title').innerText = product.title;
-                document.getElementById('modal-product-full-desc').innerText = product.description;
-                
+                document.getElementById('modal-product-full-desc').innerHTML = product.description;
+
                 const priceElement = document.getElementById('modal-product-price');
                 if (product.isCustom) {
                     priceElement.style.display = 'none';
@@ -528,9 +618,9 @@
                 if (product.isCustom) {
                     buyBtn.innerHTML = '<i class="fas fa-star"></i> Personalizar';
                 } else {
-                    buyBtn.innerHTML = '<i class="fas fa-shopping-cart"></i> Comprar';
+                    buyBtn.innerHTML = 'Comprar';
                 }
-                
+
                 const imagesContainer = document.querySelector('.modal-body .product-images');
                 imagesContainer.innerHTML = '';
                 product.images.forEach(imgSrc => {
@@ -556,4 +646,3 @@
     </script>
 </body>
 </html>
-
