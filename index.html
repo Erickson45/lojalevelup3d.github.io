@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Audiowide&family=Grenze+Gotisch:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
@@ -94,18 +97,24 @@
         /* --- Seção Hero --- */
         .hero {
             width: 100%;
-            min-height: 70vh;
+            min-height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 4rem 2rem;
-            padding-top: 120px;
+            padding: 2rem;
             background-color: #12121E;
+            position: relative;
         }
         
         .hero-content {
             animation: fadeInUp 1s ease-out;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .hero h1 {
@@ -126,11 +135,53 @@
             color: #A0A0A0;
             max-width: 600px;
         }
+        
+        /* --- Seta "Role para baixo" --- */
+        .scroll-down-arrow {
+            position: absolute;
+            bottom: 15vh; /* POSIÇÃO FINALMENTE AJUSTADA */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: opacity 0.4s ease;
+            cursor: default;
+        }
+
+        .scroll-down-arrow.fade-out {
+            opacity: 0;
+        }
+
+        .scroll-down-arrow i {
+            background: linear-gradient(135deg, #8A2BE2, #44CFCB);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: pulse-fade 2s infinite;
+        }
+
+        .scroll-down-arrow .fa-chevron-down:first-child {
+            font-size: 2rem;
+        }
+        .scroll-down-arrow .fa-chevron-down:last-child {
+            font-size: 1.2rem;
+            margin-top: -10px;
+            animation-delay: 0.3s;
+        }
+        
+        @keyframes pulse-fade {
+            0% { opacity: 0; transform: translateY(-10px); }
+            50% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(10px); }
+        }
+
 
         /* --- Título de Seção Melhorado --- */
         .section-title {
             text-align: center;
-            margin: 8rem 0 3rem 0;
+            margin: 4rem 0 3rem 0;
+            padding-top: 4rem;
             font-family: 'Press Start 2P', cursive;
             font-size: 2.5rem;
             background: linear-gradient(90deg, #FFD700, #F0B400, #FFD700);
@@ -145,7 +196,7 @@
             color: #FFD700;
             text-shadow: 0 0 10px #F0B400;
             vertical-align: middle;
-            font-size: 0.8em; /* Ajusta o tamanho do ícone */
+            font-size: 0.8em;
         }
 
         @keyframes shimmer {
@@ -449,30 +500,30 @@
             .mission-section, .cta-section { margin-left: 0; margin-right: 0; width: 100%; }
             .footer-content { flex-direction: column; align-items: center; text-align: center; }
 
-            /* AJUSTES DE RESPONSIVIDADE PARA O MODAL (REFINADO) */
+            /* AJUSTE FINAL DE TAMANHO PARA O MODAL */
             .modal-content {
                 width: 90%;
-                padding: 20px; /* Um pouco menos de padding */
-                max-height: 85vh; /* Um pouco menor na altura */
+                padding: 15px;
+                max-height: 75vh;
                 overflow-y: auto;
             }
             .modal-body {
                 flex-direction: column;
                 text-align: center;
-                gap: 15px; /* Diminuir o espaço entre imagem e texto */
+                gap: 15px;
             }
             .modal-body .product-info h3 {
-                font-size: 1.5rem; /* Título menor */
+                font-size: 1.2rem;
             }
             #modal-product-full-desc {
-                font-size: 0.9rem; /* Garantir que a descrição seja legível */
+                font-size: 0.9rem;
                 line-height: 1.6;
             }
             .modal-body .product-info .modal-price {
-                font-size: 1.4rem; /* Preço menor */
+                font-size: 1.1rem;
             }
             .modal-content .btn {
-                padding: 0.7rem 1.5rem; /* Botão um pouco menor */
+                padding: 0.7rem 1.5rem;
                 font-size: 0.9rem;
             }
         }
@@ -482,7 +533,7 @@
 
     <nav class="navbar">
         <div class="nav-links">
-            <a href="index.html" class="active"><i class="fas fa-treasure-chest"></i> Produtos</a>
+            <a href="index.html" class="active"><i class="fas fa-gem"></i> Produtos</a>
             <a href="sobre.html"><i class="fas fa-scroll"></i> Sobre Nós</a>
         </div>
     </nav>
@@ -493,18 +544,24 @@
             <p>Sua imaginação transformada em realidade, peça por peça.</p>
             <a href="https://wa.me/5584921555670?text=Ol%C3%A1%2C%2C%20gostaria%20de%20solicitar%20um%20produto%20personalizado!" class="btn interactive-btn">Criar Produto Personalizado</a>
         </div>
+        <div class="scroll-down-arrow" aria-label="Rolar para baixo">
+            <i class="fas fa-chevron-down"></i>
+            <i class="fas fa-chevron-down"></i>
+        </div>
     </section>
 
-    <h2 class="section-title"><i class="fas fa-gem"></i> Confira Nosso Loot <i class="fas fa-gem"></i></h2>
-
-    <div class="container">
-        <div class="product-card"> <div class="gallery"> <img src="caixa.jpg" alt="Caixa Misteriosa - Imagem 1"> </div> <div class="info"> <h2>Caixa Misteriosa</h2> <p class="product-description">Pronto para a aventura? Uma caixa repleta de tesouros 💎 do universo geek, anime ou RPG. Descubra o que o destino reservou para você!</p> <p class="price">R$ 45,00</p> <a href="#" class="btn details-btn" data-product-id="mystery-box">Detalhes</a> <a href="https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20a%20a%20Caixa%20Misteriosa!" class="btn" target="_blank" rel="noopener noreferrer">Comprar</a> </div> </div>
-        <div class="product-card"> <div class="gallery"> <img src="chaveiros.jpg" alt="Chaveiro - Imagem 1"> </div> <div class="info"> <h2>Chaveiro Geek</h2> <p class="product-description">Leve seu personagem favorito para qualquer lugar! Chaveiros incríveis e personalizados, perfeitos para dar um toque especial no seu dia a dia. 🎮✨</p> <p class="price">A partir de R$ 5,00</p> <a href="#" class="btn details-btn" data-product-id="keychain">Detalhes</a> <a href="https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20um%20Chaveiro%20Geek!" class="btn" target="_blank" rel="noopener noreferrer">Comprar</a> </div> </div>
-        <div class="product-card"> <div class="gallery"> <img src="personalizados.jpg" alt="Produto Personalizado - Imagem 1"> </div> <div class="info"> <h2>Produto Personalizado</h2> <p class="product-description">Sua imaginação é o limite! Deixe-nos transformar a sua ideia mais criativa em uma peça única de alta qualidade. Conte-nos o que você sonha em criar! 💖</p> <p class="price"></p> <a href="#" class="btn details-btn" data-product-id="custom">Detalhes</a> <a href="https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20produto%20personalizado!" class="btn" target="_blank" rel="noopener noreferrer">Personalizar</a> </div> </div>
-    </div>
+    <section id="main-content">
+        <h2 class="section-title"><i class="fas fa-gem"></i> Confira Nosso Loot <i class="fas fa-gem"></i></h2>
+    
+        <div class="container">
+            <div class="product-card"> <div class="gallery"> <img src="caixa.jpg" alt="Caixa Misteriosa - Imagem 1"> </div> <div class="info"> <h2>Caixa Misteriosa</h2> <p class="product-description">Pronto para a aventura? Uma caixa repleta de tesouros 💎 do universo geek, anime ou RPG. Descubra o que o destino reservou para você!</p> <p class="price">R$ 45,00</p> <a href="#" class="btn details-btn" data-product-id="mystery-box">Detalhes</a> <a href="https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20a%20a%20Caixa%20Misteriosa!" class="btn" target="_blank" rel="noopener noreferrer">Comprar</a> </div> </div>
+            <div class="product-card"> <div class="gallery"> <img src="chaveiros.jpg" alt="Chaveiro - Imagem 1"> </div> <div class="info"> <h2>Chaveiro Geek</h2> <p class="product-description">Leve seu personagem favorito para qualquer lugar! Chaveiros incríveis e personalizados, perfeitos para dar um toque especial no seu dia a dia. 🎮✨</p> <p class="price">A partir de R$ 5,00</p> <a href="#" class="btn details-btn" data-product-id="keychain">Detalhes</a> <a href="https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20um%20Chaveiro%20Geek!" class="btn" target="_blank" rel="noopener noreferrer">Comprar</a> </div> </div>
+            <div class="product-card"> <div class="gallery"> <img src="personalizados.jpg" alt="Produto Personalizado - Imagem 1"> </div> <div class="info"> <h2>Produto Personalizado</h2> <p class="product-description">Sua imaginação é o limite! Deixe-nos transformar a sua ideia mais criativa em uma peça única de alta qualidade. Conte-nos o que você sonha em criar! 💖</p> <p class="price"></p> <a href="#" class="btn details-btn" data-product-id="custom">Detalhes</a> <a href="https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20produto%20personalizado!" class="btn" target="_blank" rel="noopener noreferrer">Personalizar</a> </div> </div>
+        </div>
+    </section>
 
     <div class="mission-section">
-        <h2><i class="fas fa-star"></i> Feito de Geek para Geek <i class="fas fa-star"></i></h2>
+        <h2><i class="fas fa-star"></i> De Fã para Fã <i class="fas fa-star"></i></h2>
         <p>Nossa quest é transformar sua paixão em realidade, com itens de qualidade e preço justo, feitos por quem entende do assunto.</p>
         <a href="sobre.html" class="btn details-btn">Conheça Nossa História</a>
     </div>
@@ -519,7 +576,7 @@
         <div class="footer-content">
             <div class="footer-column">
                 <h4>LevelUp3D</h4>
-                <p>Sua imaginação transformada em realidade. Itens colecionáveis e personalizados feitos de geek para geek.</p>
+                <p>Sua imaginação transformada em realidade. Itens colecionáveis e personalizados feitos de Fã para Fã.</p>
             </div>
             <div class="footer-column">
                 <h4>Navegação</h4>
@@ -573,18 +630,29 @@
         closeModalBtn.addEventListener('click', () => { modal.style.display = 'none'; });
         window.addEventListener('click', (e) => { if (e.target == modal) { modal.style.display = 'none'; } });
 
-        // Script para o efeito de scroll do menu
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) { 
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // SCRIPT PARA ANIMAÇÃO DOS CARDS AO ROLAR
+        // --- SCRIPTS DE ANIMAÇÃO E INTERAÇÃO ---
         document.addEventListener('DOMContentLoaded', () => {
+            const navbar = document.querySelector('.navbar');
+            const scrollArrow = document.querySelector('.scroll-down-arrow');
+            
+            // Efeito de scroll do menu e da seta
+            window.addEventListener('scroll', () => {
+                const scrollPosition = window.scrollY;
+                if (scrollPosition > 50) { 
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                if (scrollArrow) {
+                    if (scrollPosition > 50) {
+                        scrollArrow.classList.add('fade-out');
+                    } else {
+                        scrollArrow.classList.remove('fade-out');
+                    }
+                }
+            });
+
+            // Animação de entrada dos cards de produto
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
