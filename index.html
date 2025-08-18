@@ -6,7 +6,7 @@
     <title>LevelUp3D - Loja Oficial</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Audiowide&family=Grenze+Gotisch:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -26,58 +26,39 @@
         /* --- Menu de Navegação --- */
         .navbar {
             width: 100%;
-            background-color: #1A1A2E;
-            padding: 1.5rem 1.5rem;
+            padding: 1.5rem 2rem;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            position: sticky; /* A propriedade correta para que o menu grude no topo */
+            position: fixed;
             top: 0;
-            z-index: 100;
-            flex-wrap: wrap;
-            transition: background-color 0.4s ease;
+            left: 0;
+            z-index: 1000;
+            background-color: transparent;
+            transition: background-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
         }
 
-        /* Ajuste do logo para evitar cortes */
-        .navbar .logo {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, #8A2BE2, #44CFCB);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
-            transition: transform 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding-left: 2rem;
+        .navbar.scrolled {
+            background-color: #1A1A2E;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
-
-        .navbar .logo:hover {
-            transform: scale(1.05);
-        }
-
-        .navbar .logo i {
-            margin-right: 0;
-        }
-
-        /* Efeito de hover aprimorado no menu */
+        
         .navbar .nav-links {
             display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            padding-right: 1.5rem;
+            gap: 2.5rem;
         }
 
         .navbar .nav-links a {
             color: #F0F0F0;
             text-decoration: none;
             font-weight: 500;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             position: relative;
             transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .navbar .nav-links a::after {
@@ -89,12 +70,15 @@
             height: 2px;
             background-color: #8A2BE2;
             transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease-in-out;
+            transform-origin: center;
+            transition: transform 0.4s ease;
         }
 
         .navbar .nav-links a:hover::after {
             transform: scaleX(1);
+        }
+        .navbar .nav-links a:hover {
+            color: #44CFCB;
         }
 
         .navbar .nav-links .active {
@@ -107,30 +91,75 @@
             transform: scaleX(1);
         }
 
-        .header {
+        /* --- Seção Hero --- */
+        .hero {
             width: 100%;
-            padding: 5rem 1.5rem 3rem;
-            text-align: center;
-            min-height: 150px;
+            min-height: 70vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            padding-top: 120px;
+            background-color: #12121E;
+        }
+        
+        .hero-content {
+            animation: fadeInUp 1s ease-out;
         }
 
-        /* Estilo para o título "Bem-Vindo!" */
-        .header h1 {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 3rem;
+        .hero h1 {
+            font-family: 'Audiowide', cursive;
+            font-size: 4rem;
             font-weight: 700;
-            background: linear-gradient(45deg, #44CFCB, #FFD700);
+            background: linear-gradient(45deg, #8A2BE2, #44CFCB);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 10px rgba(68, 207, 203, 0.5);
+            text-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
             margin: 0;
         }
 
-        /* Layout dos cards para telas grandes (PC) */
+        .hero p {
+            font-size: 1.5rem;
+            margin: 1rem 0 2rem 0;
+            color: #A0A0A0;
+            max-width: 600px;
+        }
+
+        /* --- Título de Seção Melhorado --- */
+        .section-title {
+            text-align: center;
+            margin: 8rem 0 3rem 0;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, #FFD700, #F0B400, #FFD700);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 4s linear infinite, float 3s ease-in-out infinite;
+        }
+        
+        .section-title i {
+            color: #FFD700;
+            text-shadow: 0 0 10px #F0B400;
+            vertical-align: middle;
+            font-size: 0.8em; /* Ajusta o tamanho do ícone */
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* --- Container dos Produtos --- */
         .container {
             display: flex;
             flex-wrap: wrap;
@@ -144,18 +173,20 @@
             background-color: #1A1A2E;
             border-radius: 15px;
             overflow: hidden;
-            width: 300px; /* Largura fixa para PC */
+            width: 300px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-            transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
             position: relative;
-            animation: fadeInUp 1s ease-out forwards;
             border: 2px solid transparent;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-
-        /* Animação com delay para cada card */
-        .product-card:nth-child(1) { animation-delay: 0.1s; }
-        .product-card:nth-child(2) { animation-delay: 0.3s; }
-        .product-card:nth-child(3) { animation-delay: 0.5s; }
+        
+        .product-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         .product-card:hover {
             transform: translateY(-10px) scale(1.02);
@@ -173,9 +204,7 @@
             -ms-overflow-style: none;
         }
 
-        .gallery::-webkit-scrollbar {
-            display: none;
-        }
+        .gallery::-webkit-scrollbar { display: none; }
 
         .gallery img {
             min-width: 100%;
@@ -200,6 +229,7 @@
             font-size: 1rem;
             color: #A0A0A0;
             margin-bottom: 1rem;
+            min-height: 80px;
         }
 
         .info .price {
@@ -237,81 +267,153 @@
             background-color: #3aa2a0;
         }
 
-        /* --- Seção de Avaliações --- */
-        .reviews-section {
+        /* --- Seção Missão --- */
+        .mission-section {
             background-color: #1A1A2E;
             width: 100%;
             max-width: 800px;
-            margin-top: 4rem;
+            margin: 4rem 1.5rem;
             padding: 2.5rem;
             border-radius: 15px;
             text-align: center;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
             animation: fadeInUp 1.5s ease-out;
+            border-top: 3px solid #FFD700;
         }
 
-        .reviews-section h2 {
+        .mission-section h2 {
             font-size: 2.2rem;
-            color: #FFD700;
-            margin-bottom: 1.5rem;
-        }
-
-        .reviews-section p {
-            font-size: 1.1rem;
-            color: #A0A0A0;
-            margin-bottom: 2rem;
-        }
-
-        /* --- Melhoria do Rodapé --- */
-        footer {
-            margin-top: 5rem;
-            padding: 2rem;
-            background-color: #1A1A2E;
-            color: white;
-            width: 100%;
-            text-align: center;
-            border-top: 3px solid #8A2BE2;
-        }
-
-        footer p {
-            font-size: 1rem;
-            color: #A0A0A0;
+            color: #44CFCB;
             margin-bottom: 1rem;
         }
 
-        .whatsapp-contact {
-            background-color: #25D366;
-            display: inline-block;
-            padding: 0.7rem 1.5rem;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-decoration: none;
-            color: white;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        .mission-section p {
+            font-size: 1.1rem;
+            color: #A0A0A0;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        
+        /* --- NOVA SEÇÃO DE CHAMADA PARA AÇÃO (ANTIGA AVALIAÇÃO) --- */
+        .cta-section {
+            background-color: #1A1A2E;
+            width: 100%;
+            max-width: 800px;
+            margin: 4rem 1.5rem;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border-top: 3px solid #FFD700;
+            animation: fadeInUp 1.5s ease-out;
         }
 
-        .whatsapp-contact:hover {
+        .cta-section h2 {
+            font-size: 2.2rem;
+            color: #FFD700;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem; /* Fonte um pouco maior */
+            color: #A0A0A0;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn.interactive-btn {
+            background: linear-gradient(45deg, #8A2BE2, #44CFCB);
+            border: none;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 1rem 2.5rem; /* Botão maior */
+            font-size: 1.1rem;
+        }
+
+        .btn.interactive-btn:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.2);
         }
 
-        .whatsapp-contact i {
-            margin-right: 0.5rem;
+        /* --- Rodapé --- */
+        footer {
+            margin-top: 5rem;
+            padding: 3rem 2rem 0 2rem;
+            background-color: #1A1A2E;
+            color: #A0A0A0;
+            width: 100%;
+            border-top: 3px solid #8A2BE2;
         }
-
-        footer .social a {
-            color: #F0F0F0;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-            margin: 0 0.5rem;
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 2rem;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-column h4 {
             font-size: 1.5rem;
+            color: #F0F0F0;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .footer-column p, .footer-column ul a {
+            color: #A0A0A0;
+            line-height: 1.7;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.7rem;
+        }
+        
+        .footer-column ul a {
+            text-decoration: none;
+            transition: color 0.3s ease, padding-left 0.3s ease;
         }
 
-        footer .social a:hover {
+        .footer-column ul a:hover {
             color: #44CFCB;
+            padding-left: 5px;
+        }
+        
+        .footer-socials a {
+            font-size: 1.8rem;
+            margin-right: 1rem;
+            color: #A0A0A0;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .footer-socials a:hover {
+            color: #44CFCB;
+            transform: scale(1.1);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 1.5rem 0;
+            border-top: 1px solid #33334E;
+            margin-top: 2rem;
+            font-size: 0.9rem;
         }
 
         @keyframes fadeInUp {
@@ -320,327 +422,161 @@
         }
 
         /* --- Estilos do Modal --- */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 101;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.8);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.3s forwards;
-        }
-
-        .modal-content {
-            background-color: #1A1A2E;
-            padding: 40px;
-            border-radius: 15px;
-            width: 80%;
-            max-width: 900px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            animation: slideUp 0.5s forwards;
-        }
-
-        .close-btn {
-            color: #F0F0F0;
-            font-size: 30px;
-            font-weight: bold;
-            position: absolute;
-            top: 15px;
-            right: 25px;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .close-btn:hover {
-            color: #8A2BE2;
-        }
-
-        .modal-header {
-            text-align: center;
-        }
-
-        .modal-body {
-            display: flex;
-            flex-direction: row;
-            gap: 30px;
-        }
-
-        .modal-body .product-images {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .modal-body .product-images img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .modal-body .product-images img.active {
-            border: 2px solid #44CFCB;
-        }
-
-        .modal-body .product-info {
-            flex: 1.5;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .modal-body .product-info h3 {
-            color: #44CFCB;
-            font-size: 2.2rem;
-            margin-top: 0;
-        }
-
-        .modal-body .product-info .modal-price {
-            font-size: 2rem;
-            color: #FFD700;
-            font-weight: 700;
-            margin: 10px 0 20px;
-        }
-
-        /* Animações */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
+        .modal { display: none; position: fixed; z-index: 101; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); justify-content: center; align-items: center; animation: fadeIn 0.3s forwards; }
+        .modal-content { background-color: #1A1A2E; padding: 40px; border-radius: 15px; width: 80%; max-width: 900px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6); position: relative; display: flex; flex-direction: column; gap: 20px; animation: slideUp 0.5s forwards; }
+        .close-btn { color: #F0F0F0; font-size: 30px; font-weight: bold; position: absolute; top: 15px; right: 25px; cursor: pointer; transition: color 0.3s; }
+        .close-btn:hover { color: #8A2BE2; }
+        .modal-body { display: flex; flex-direction: row; gap: 30px; }
+        .modal-body .product-images { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+        .modal-body .product-images img { width: 100%; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); cursor: pointer; transition: transform 0.2s; }
+        .modal-body .product-images img.active { border: 2px solid #44CFCB; }
+        .modal-body .product-info { flex: 1.5; display: flex; flex-direction: column; justify-content: center; }
+        .modal-body .product-info h3 { color: #44CFCB; font-size: 2.2rem; margin-top: 0; }
+        .modal-body .product-info .modal-price { font-size: 2rem; color: #FFD700; font-weight: 700; margin: 10px 0 20px; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
         /* --- Responsividade --- */
         @media (max-width: 768px) {
-            .navbar {
-                padding: 1rem 1rem;
-            }
-            .navbar .logo {
-                font-size: 2rem;
-                padding-left: 1rem;
-            }
-            .navbar .nav-links a {
-                font-size: 0.9rem;
-            }
-            .header h1 {
-                font-size: 1.8rem;
-            }
-            .container {
-                padding: 1rem;
-                gap: 1.5rem;
-                flex-direction: column;
-            }
-            .product-card {
-                width: 100%;
-                max-width: none;
-            }
-            .reviews-section {
-                margin-top: 3rem;
-                padding: 2rem 1.5rem;
-            }
-            .reviews-section h2 {
-                font-size: 1.8rem;
-            }
-        }
-        @media (max-width: 480px) {
-            .header h1 {
-                font-size: 1.5rem;
-            }
-        }
-
-        /* Novos estilos para o botão interativo */
-        .btn.interactive-btn {
-            background: linear-gradient(45deg, #8A2BE2, #44CFCB);
-            border: none;
-            transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn.interactive-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-            filter: brightness(1.2);
+            .navbar .nav-links a { font-size: 1rem; }
+            .navbar .nav-links { gap: 1.5rem; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            .section-title { font-size: 1.5rem; margin-top: 5rem; }
+            .container { padding: 1rem; gap: 1.5rem; flex-direction: column; }
+            .product-card { width: 100%; max-width: 350px; }
+            .info p { min-height: auto; }
+            .mission-section, .cta-section { margin-left: 0; margin-right: 0; width: 100%; }
+            .footer-content { flex-direction: column; align-items: center; text-align: center; }
         }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="logo"><i class="fas fa-dragon"></i> LevelUp3D</div>
         <div class="nav-links">
             <a href="index.html" class="active"><i class="fas fa-gem"></i> Produtos</a>
             <a href="sobre.html"><i class="fas fa-users"></i> Sobre Nós</a>
         </div>
     </nav>
 
-    <div class="header">
-        <h1>Bem-Vindo!</h1>
-    </div>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>LevelUp3D</h1>
+            <p>Sua imaginação transformada em realidade, peça por peça.</p>
+            <a href="https://wa.me/5584921555670?text=Ol%C3%A1%2C%2C%20gostaria%20de%20solicitar%20um%20produto%20personalizado!" class="btn interactive-btn">Criar Produto Personalizado</a>
+        </div>
+    </section>
+
+    <h2 class="section-title"><i class="fas fa-gem"></i> Confira Nossos Produtos <i class="fas fa-gem"></i></h2>
 
     <div class="container">
-
-        <div class="product-card">
-            <div class="gallery">
-                <img src="caixa.jpg" alt="Caixa Misteriosa - Imagem 1">
-            </div>
-            <div class="info">
-                <h2>Caixa Misteriosa</h2>
-                <p class="product-description">Pronto para a aventura? Uma caixa repleta de tesouros 💎 do universo geek, anime ou RPG. Descubra o que o destino reservou para você!</p>
-                <p class="price">R$ 45,00</p>
-                <a href="#" class="btn details-btn" data-product-id="mystery-box">Detalhes</a>
-                <a href="https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20a%20a%20Caixa%20Misteriosa!" class="btn" target="_blank" rel="noopener noreferrer"> Comprar</a>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <div class="gallery">
-                <img src="chaveiros.jpg" alt="Chaveiro - Imagem 1">
-            </div>
-            <div class="info">
-                <h2>Chaveiro Geek</h2>
-                <p class="product-description">Leve seu personagem favorito para qualquer lugar! Chaveiros incríveis e personalizados, perfeitos para dar um toque especial no seu dia a dia. 🎮✨</p>
-                <p class="price">A partir de R$ 5,00</p>
-                <a href="#" class="btn details-btn" data-product-id="keychain">Detalhes</a>
-                <a href="https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20um%20Chaveiro%20Geek!" class="btn" target="_blank" rel="noopener noreferrer"> Comprar</a>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <div class="gallery">
-                <img src="personalizados.jpg" alt="Produto Personalizado - Imagem 1">
-            </div>
-            <div class="info">
-                <h2>Produto Personalizado</h2>
-                <p class="product-description">Sua imaginação é o limite! Deixe-nos transformar a sua ideia mais criativa em uma peça única de alta qualidade. Conte-nos o que você sonha em criar! 💖</p>
-                <a href="#" class="btn details-btn" data-product-id="custom">Detalhes</a>
-                <a href="https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20produto%20personalizado!" class="btn" target="_blank" rel="noopener noreferrer"> Personalizar</a>
-            </div>
-        </div>
-
+        <div class="product-card"> <div class="gallery"> <img src="caixa.jpg" alt="Caixa Misteriosa - Imagem 1"> </div> <div class="info"> <h2>Caixa Misteriosa</h2> <p class="product-description">Pronto para a aventura? Uma caixa repleta de tesouros 💎 do universo geek, anime ou RPG. Descubra o que o destino reservou para você!</p> <p class="price">R$ 45,00</p> <a href="#" class="btn details-btn" data-product-id="mystery-box">Detalhes</a> <a href="https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20a%20a%20Caixa%20Misteriosa!" class="btn" target="_blank" rel="noopener noreferrer">Comprar</a> </div> </div>
+        <div class="product-card"> <div class="gallery"> <img src="chaveiros.jpg" alt="Chaveiro - Imagem 1"> </div> <div class="info"> <h2>Chaveiro Geek</h2> <p class="product-description">Leve seu personagem favorito para qualquer lugar! Chaveiros incríveis e personalizados, perfeitos para dar um toque especial no seu dia a dia. 🎮✨</p> <p class="price">A partir de R$ 5,00</p> <a href="#" class="btn details-btn" data-product-id="keychain">Detalhes</a> <a href="https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20um%20Chaveiro%20Geek!" class="btn" target="_blank" rel="noopener noreferrer">Comprar</a> </div> </div>
+        <div class="product-card"> <div class="gallery"> <img src="personalizados.jpg" alt="Produto Personalizado - Imagem 1"> </div> <div class="info"> <h2>Produto Personalizado</h2> <p class="product-description">Sua imaginação é o limite! Deixe-nos transformar a sua ideia mais criativa em uma peça única de alta qualidade. Conte-nos o que você sonha em criar! 💖</p> <p class="price"></p> <a href="#" class="btn details-btn" data-product-id="custom">Detalhes</a> <a href="https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20produto%20personalizado!" class="btn" target="_blank" rel="noopener noreferrer">Personalizar</a> </div> </div>
     </div>
 
-    <div class="reviews-section">
-        <h2>O que nossos clientes dizem?</h2>
-        <p>Sua opinião é a nossa maior conquista. Deixe sua avaliação sobre nosso atendimento e produtos!</p>
-        <a href="https://docs.google.com/forms/u/2/create?usp=forms_home&ths=true" class="btn interactive-btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-comment-dots"></i> Avaliar Atendimento</a>
+    <div class="mission-section">
+        <h2><i class="fas fa-star"></i> Feito de Geek para Geek <i class="fas fa-star"></i></h2>
+        <p>Nossa quest é transformar sua paixão em realidade, com itens de qualidade e preço justo, feitos por quem entende do assunto.</p>
+        <a href="sobre.html" class="btn details-btn">Conheça Nossa História</a>
+    </div>
+
+    <div class="cta-section">
+        <h2>Gostou do que viu?</h2>
+        <p>Sua opinião é a nossa maior conquista. Adoramos ouvir nossos clientes e estamos sempre prontos para começar uma nova missão!</p>
+        <a href="https://docs.google.com/forms/u/2/create?usp=forms_home&ths=true" class="btn interactive-btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-comment-dots"></i> Deixe sua Avaliação</a>
     </div>
 
     <footer>
-        <p>Tem dúvidas? Fale conosco!</p>
-        <a href="https://wa.me/5584921555670" class="whatsapp-contact" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-whatsapp"></i> 84 92155-5670
-        </a>
-        <div class="social">
-            <a href="https://www.instagram.com/levelup3d45" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i> Instagram @levelup3d45</a>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>LevelUp3D</h4>
+                <p>Sua imaginação transformada em realidade. Itens colecionáveis e personalizados feitos de geek para geek.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="index.html">Produtos</a></li>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contato</h4>
+                <div class="footer-socials">
+                    <a href="https://wa.me/5584921555670" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/levelup3d45" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 LevelUp3D. Todos os direitos reservados.
         </div>
     </footer>
 
     <div id="productModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <div class="modal-body">
-                <div class="product-images">
-                    </div>
-                <div class="product-info">
-                    <h3 id="modal-product-title"></h3>
-                    <p id="modal-product-full-desc"></p>
-                    <p id="modal-product-price" class="modal-price"></p>
-                    <a id="modal-buy-btn" href="#" class="btn" target="_blank" rel="noopener noreferrer"></a>
-                </div>
-            </div>
-        </div>
+        <div class="modal-content"> <span class="close-btn">&times;</span> <div class="modal-body"> <div class="product-images"></div> <div class="product-info"> <h3 id="modal-product-title"></h3> <p id="modal-product-full-desc"></p> <p id="modal-product-price" class="modal-price"></p> <a id="modal-buy-btn" href="#" class="btn" target="_blank" rel="noopener noreferrer"></a> </div> </div> </div>
     </div>
 
     <script>
-        const products = {
-            'mystery-box': {
-                title: 'Caixa Misteriosa 🎁',
-                description: 'A emoção de uma surpresa! Nossa <b>Caixa Misteriosa</b> é a escolha perfeita para quem ama o universo geek. Cada caixa contém uma seleção exclusiva de itens de alta qualidade, como colecionáveis raros, action figures, chaveiros temáticos e outros produtos incríveis feitos em impressão 3D. 🎲 Anime, RPG ou cultura pop, o que será que te espera? 💫',
-                price: 'R$ 45,00',
-                images: ['caixa.jpg'],
-                whatsappLink: 'https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20a%20a%20Caixa%20Misteriosa!'
-            },
-            'keychain': {
-                title: 'Chaveiro Geek 🔑',
-                description: 'Dê um upgrade nas suas chaves! Nossos <b>Chaveiros Geek</b> são feitos com impressão 3D de alta precisão e estão disponíveis em uma variedade de designs inspirados nos seus animes e games favoritos. Feitos para durar, são resistentes e cheios de estilo. Adicione um toque da sua paixão em cada detalhe! 🌟',
-                price: 'A partir de R$ 5,00',
-                images: ['chaveiros.jpg'],
-                whatsappLink: 'https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20um%20Chaveiro%20Geek!'
-            },
-            'custom': {
-                title: 'Produto Personalizado 🛠️',
-                description: 'Transforme sua ideia em realidade! 🖌️ Se você tem um personagem, símbolo ou objeto em mente, nós podemos criá-lo do zero especialmente para você. Com a nossa tecnologia de impressão 3D, garantimos que cada detalhe será perfeito. Conte-nos o que você busca e vamos construir essa obra de arte juntos! ✨',
-                price: '',
-                images: ['personalizados.jpg'],
-                whatsappLink: 'https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20produto%20personalizado!',
-                isCustom: true
-            }
-        };
-
+        // Script do Modal
+        const products = { 'mystery-box': { title: 'Caixa Misteriosa 🎁', description: 'A emoção de uma surpresa! Nossa <b>Caixa Misteriosa</b> é a escolha perfeita para quem ama o universo geek. Cada caixa contém uma seleção exclusiva de itens de alta qualidade, como colecionáveis raros, action figures, chaveiros temáticos e outros produtos incríveis feitos em impressão 3D. 🎲 Anime, RPG ou cultura pop, o que será que te espera? 💫', price: 'R$ 45,00', images: ['caixa.jpg'], whatsappLink: 'https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20a%20a%20Caixa%20Misteriosa!' }, 'keychain': { title: 'Chaveiro Geek 🔑', description: 'Dê um upgrade nas suas chaves! Nossos <b>Chaveiros Geek</b> são feitos com impressão 3D de alta precisão e estão disponíveis em uma variedade de designs inspirados nos seus animes e games favoritos. Feitos para durar, são resistentes e cheios de estilo. Adicione um toque da sua paixão em cada detalhe! 🌟', price: 'A partir de R$ 5,00', images: ['chaveiros.jpg'], whatsappLink: 'https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20um%20Chaveiro%20Geek!' }, 'custom': { title: 'Produto Personalizado 🛠️', description: 'Transforme sua ideia em realidade! 🖌️ Se você tem um personagem, símbolo ou objeto em mente, nós podemos criá-lo do zero especialmente para você. Com a nossa tecnologia de impressão 3D, garantimos que cada detalhe será perfeito. Conte-nos o que você busca e vamos construir essa obra de arte juntos! ✨', price: '', images: ['personalizados.jpg'], whatsappLink: 'https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20produto%20personalizado!', isCustom: true } };
         const modal = document.getElementById('productModal');
         const closeModalBtn = document.querySelector('.close-btn');
         const detailsBtns = document.querySelectorAll('.details-btn');
-
         detailsBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 const productId = e.target.getAttribute('data-product-id');
+                if (!productId) return;
                 const product = products[productId];
-
                 document.getElementById('modal-product-title').innerText = product.title;
                 document.getElementById('modal-product-full-desc').innerHTML = product.description;
-
                 const priceElement = document.getElementById('modal-product-price');
-                if (product.isCustom) {
-                    priceElement.style.display = 'none';
-                } else {
-                    priceElement.style.display = 'block';
-                    priceElement.innerText = product.price;
-                }
-
+                if (product.isCustom || !product.price) { priceElement.style.display = 'none'; } else { priceElement.style.display = 'block'; priceElement.innerText = product.price; }
                 const buyBtn = document.getElementById('modal-buy-btn');
                 buyBtn.href = product.whatsappLink;
-                if (product.isCustom) {
-                    buyBtn.innerHTML = '<i class="fas fa-star"></i> Personalizar';
-                } else {
-                    buyBtn.innerHTML = 'Comprar';
-                }
-
+                if (product.isCustom) { buyBtn.innerHTML = '<i class="fas fa-star"></i> Personalizar'; } else { buyBtn.innerHTML = 'Comprar'; }
                 const imagesContainer = document.querySelector('.modal-body .product-images');
                 imagesContainer.innerHTML = '';
-                product.images.forEach(imgSrc => {
-                    const img = document.createElement('img');
-                    img.src = imgSrc;
-                    img.alt = product.title;
-                    imagesContainer.appendChild(img);
-                });
-
+                product.images.forEach(imgSrc => { const img = document.createElement('img'); img.src = imgSrc; img.alt = product.title; imagesContainer.appendChild(img); });
                 modal.style.display = 'flex';
             });
         });
+        closeModalBtn.addEventListener('click', () => { modal.style.display = 'none'; });
+        window.addEventListener('click', (e) => { if (e.target == modal) { modal.style.display = 'none'; } });
 
-        closeModalBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
+        // Script para o efeito de scroll do menu
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) { 
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         });
 
-        window.addEventListener('click', (e) => {
-            if (e.target == modal) {
-                modal.style.display = 'none';
+        // SCRIPT PARA ANIMAÇÃO DOS CARDS AO ROLAR
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const cards = entry.target.querySelectorAll('.product-card');
+                        cards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.classList.add('is-visible');
+                            }, index * 150);
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            const container = document.querySelector('.container');
+            if (container) {
+                observer.observe(container);
             }
         });
     </script>
