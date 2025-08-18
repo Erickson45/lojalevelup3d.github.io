@@ -294,7 +294,7 @@
             line-height: 1.7;
         }
         
-        /* --- NOVA SEÇÃO DE CHAMADA PARA AÇÃO (ANTIGA AVALIAÇÃO) --- */
+        /* --- Seção de Chamada para Ação --- */
         .cta-section {
             background-color: #1A1A2E;
             width: 100%;
@@ -316,7 +316,7 @@
         }
 
         .cta-section p {
-            font-size: 1.2rem; /* Fonte um pouco maior */
+            font-size: 1.2rem;
             color: #A0A0A0;
             margin-bottom: 2rem;
             line-height: 1.7;
@@ -330,7 +330,7 @@
             border: none;
             transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            padding: 1rem 2.5rem; /* Botão maior */
+            padding: 1rem 2.5rem;
             font-size: 1.1rem;
         }
 
@@ -422,7 +422,7 @@
         }
 
         /* --- Estilos do Modal --- */
-        .modal { display: none; position: fixed; z-index: 101; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); justify-content: center; align-items: center; animation: fadeIn 0.3s forwards; }
+        .modal { display: none; position: fixed; z-index: 1001; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); justify-content: center; align-items: center; animation: fadeIn 0.3s forwards; }
         .modal-content { background-color: #1A1A2E; padding: 40px; border-radius: 15px; width: 80%; max-width: 900px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6); position: relative; display: flex; flex-direction: column; gap: 20px; animation: slideUp 0.5s forwards; }
         .close-btn { color: #F0F0F0; font-size: 30px; font-weight: bold; position: absolute; top: 15px; right: 25px; cursor: pointer; transition: color 0.3s; }
         .close-btn:hover { color: #8A2BE2; }
@@ -448,6 +448,24 @@
             .info p { min-height: auto; }
             .mission-section, .cta-section { margin-left: 0; margin-right: 0; width: 100%; }
             .footer-content { flex-direction: column; align-items: center; text-align: center; }
+
+            /* AJUSTES DE RESPONSIVIDADE PARA O MODAL */
+            .modal-content {
+                width: 90%;
+                padding: 25px;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+            .modal-body {
+                flex-direction: column;
+                text-align: center;
+            }
+            .modal-body .product-info h3 {
+                font-size: 1.8rem;
+            }
+            .modal-body .product-info .modal-price {
+                font-size: 1.6rem;
+            }
         }
     </style>
 </head>
@@ -455,8 +473,8 @@
 
     <nav class="navbar">
         <div class="nav-links">
-            <a href="index.html" class="active"><i class="fas fa-gem"></i> Produtos</a>
-            <a href="sobre.html"><i class="fas fa-users"></i> Sobre Nós</a>
+            <a href="index.html" class="active"><i class="fas fa-treasure-chest"></i> Produtos</a>
+            <a href="sobre.html"><i class="fas fa-scroll"></i> Sobre Nós</a>
         </div>
     </nav>
 
@@ -468,7 +486,7 @@
         </div>
     </section>
 
-    <h2 class="section-title"><i class="fas fa-gem"></i> Confira Nossos Produtos <i class="fas fa-gem"></i></h2>
+    <h2 class="section-title"><i class="fas fa-gem"></i> Confira Nosso Loot <i class="fas fa-gem"></i></h2>
 
     <div class="container">
         <div class="product-card"> <div class="gallery"> <img src="caixa.jpg" alt="Caixa Misteriosa - Imagem 1"> </div> <div class="info"> <h2>Caixa Misteriosa</h2> <p class="product-description">Pronto para a aventura? Uma caixa repleta de tesouros 💎 do universo geek, anime ou RPG. Descubra o que o destino reservou para você!</p> <p class="price">R$ 45,00</p> <a href="#" class="btn details-btn" data-product-id="mystery-box">Detalhes</a> <a href="https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20a%20a%20Caixa%20Misteriosa!" class="btn" target="_blank" rel="noopener noreferrer">Comprar</a> </div> </div>
