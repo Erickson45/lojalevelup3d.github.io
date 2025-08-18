@@ -90,10 +90,12 @@
             letter-spacing: 2px;
             color: #8A2BE2;
         }
-
+        
+        /* Layout dos cards para telas grandes (PC) */
         .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2.5rem;
             padding: 1.5rem;
             max-width: 1200px;
@@ -103,7 +105,7 @@
             background-color: #1A1A2E;
             border-radius: 15px;
             overflow: hidden;
-            width: 300px;
+            width: 300px; /* Largura fixa para PC */
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
             transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
             position: relative;
@@ -295,7 +297,7 @@
         .close-btn:hover {
             color: #8A2BE2;
         }
-
+        
         .modal-header {
             text-align: center;
         }
@@ -312,7 +314,7 @@
             flex-direction: column;
             gap: 10px;
         }
-
+        
         .modal-body .product-images img {
             width: 100%;
             border-radius: 10px;
@@ -373,6 +375,11 @@
             .container {
                 padding: 1rem;
                 gap: 1.5rem;
+                flex-direction: column; /* Um abaixo do outro em telas menores */
+            }
+            .product-card {
+                width: 100%; /* Ocupa a largura total */
+                max-width: none;
             }
             .reviews-section {
                 margin-top: 3rem;
@@ -475,21 +482,21 @@
                 title: 'Caixa Misteriosa',
                 description: 'A emoção de uma surpresa! Nossa Caixa Misteriosa contém itens geeks de alta qualidade, como colecionáveis, action figures, chaveiros e outros produtos exclusivos. Perfeito para quem ama ser surpreendido e descobrir novos tesouros!',
                 price: 'R$ 45,00',
-                images: ['joseee.jpeg'],
+                images: ['caixa.jpg', 'chaveiros.jpg'],
                 whatsappLink: 'https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20a%20Caixa%20Misteriosa!'
             },
             'keychain': {
                 title: 'Chaveiro Geek',
                 description: 'Deixe suas chaves com a sua cara! Nossos chaveiros são feitos com impressão 3D de alta precisão e estão disponíveis em diversos designs de animes, games e cultura pop. Resistentes e cheios de estilo.',
                 price: 'A partir de R$ 5,00',
-                images: ['joseeeeee.jpeg'],
+                images: ['chaveiros.jpg'],
                 whatsappLink: 'https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20um%20Chaveiro%20Geek!'
             },
             'custom': {
                 title: 'Produto Personalizado',
                 description: 'Tem uma ideia em mente? Nós a tornamos realidade! Um item feito do zero, especialmente para você. Diga-nos o que procura!',
-                price: '', // Preço não aplicável
-                images: ['boi.jpeg'],
+                price: '',
+                images: ['personalizados.jpg'],
                 whatsappLink: 'https://wa.me/5584921555670?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20produto%20personalizado!',
                 isCustom: true
             }
