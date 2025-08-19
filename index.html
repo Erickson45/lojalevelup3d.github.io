@@ -323,11 +323,18 @@
         .btn.details-btn:hover {
             background-color: #3aa2a0;
         }
+        
+        .btn.btn-secondary {
+            background-color: #44CFCB;
+        }
+        .btn.btn-secondary:hover {
+            background-color: #3aa2a0;
+        }
 
         /* --- SEÇÃO DE PAGAMENTOS REFEITA --- */
         .payment-methods {
             width: 100%;
-            max-width: 1000px; /* Aumentado para mais espaço */
+            max-width: 1000px;
             margin: 4rem 1.5rem;
             padding: 3rem;
             text-align: center;
@@ -362,8 +369,6 @@
             transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
             transform-style: preserve-3d;
             box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-
-            /* Animação de entrada */
             opacity: 0;
             transform: translateY(50px);
         }
@@ -375,7 +380,7 @@
         }
 
         .payment-card:hover {
-            transform: translateY(-10px) rotateY(15deg) scale(1.05); /* Efeito 3D */
+            transform: translateY(-10px) rotateY(15deg) scale(1.05);
             border-color: #44CFCB;
             box-shadow: 0 15px 40px rgba(0,0,0,0.5);
         }
@@ -390,25 +395,19 @@
             color: #F0F0F0;
         }
 
-        /* Ícones com Gradiente */
         .icon-cash i {
             background: linear-gradient(45deg, #25D366, #1DB954);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
         }
         .icon-pix i {
             background: linear-gradient(45deg, #44CFCB, #00BCD4);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
         }
         .icon-card i {
             background: linear-gradient(45deg, #8A2BE2, #9C27B0);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
         }
+
 
         /* --- Seção Missão --- */
         .mission-section {
@@ -653,7 +652,7 @@
         <div class="hero-content">
             <h1>LevelUp3D</h1>
             <p>Sua imaginação transformada em realidade, peça por peça.</p>
-            <a href="https://wa.me/5584921555670?text=Ol%C3%A1%2C%2C%20gostaria%20de%20solicitar%20um%20produto%20personalizado!" class="btn interactive-btn">Criar Produto Personalizado</a>
+            <a href="https://wa.me/5584921555670?text=Ol%C3%A1%2C%2C%20gostaria%20de%20solicitar%20um%20produto%20personalizado!" class="btn interactive-btn" target="_blank" rel="noopener noreferrer">Criar Produto Personalizado</a>
         </div>
         <div class="scroll-down-arrow" aria-label="Rolar para baixo">
             <i class="fas fa-chevron-down"></i>
@@ -692,13 +691,13 @@
     <div class="mission-section">
         <h2><i class="fas fa-star"></i> De Fã para Fã <i class="fas fa-star"></i></h2>
         <p>Nossa quest é transformar sua paixão em realidade, com itens de qualidade e preço justo, feitos por quem entende do assunto.</p>
-        <a href="sobre.html" class="btn details-btn">Conheça Nossa História</a>
+        <a href="sobre.html" class="btn btn-secondary">Conheça Nossa História</a>
     </div>
 
     <div class="cta-section">
         <h2>Gostou do que viu?</h2>
         <p>Sua opinião é a nossa maior conquista. Adoramos ouvir nossos clientes e estamos sempre prontos para começar uma nova missão!</p>
-        <a href="https://docs.google.com/forms/u/2/create?usp=forms_home&ths=true" class="btn interactive-btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-comment-dots"></i> Deixe sua Avaliação</a>
+        <a href="https://docs.google.com/forms/d/1tk7XZMUkzacke-bGOBATnD-g7gw-7xe6zLMFHq2SAF8/edit" class="btn interactive-btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-comment-dots"></i> Deixe sua Avaliação</a>
     </div>
 
     <footer>
@@ -739,9 +738,11 @@
         const detailsBtns = document.querySelectorAll('.details-btn');
         detailsBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const productId = e.target.getAttribute('data-product-id');
+                const productId = e.target.closest('[data-product-id]')?.getAttribute('data-product-id');
                 if (!productId) return;
+                
+                e.preventDefault();
+                
                 const product = products[productId];
                 document.getElementById('modal-product-title').innerText = product.title;
                 document.getElementById('modal-product-full-desc').innerHTML = product.description;
@@ -784,16 +785,14 @@
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Animação para cards de produto e pagamento
-                        const cards = entry.target.querySelectorAll('.product-card, .payment-card');
-                        if (cards.length > 0) {
-                            cards.forEach((card, index) => {
+                        const childCards = entry.target.querySelectorAll('.product-card, .payment-card');
+                        if (childCards.length > 0) {
+                            childCards.forEach((card, index) => {
                                 setTimeout(() => {
                                     card.classList.add('is-visible');
                                 }, index * 150);
                             });
                         } else {
-                            // Animação para seções inteiras
                             entry.target.classList.add('is-visible');
                         }
                         observer.unobserve(entry.target);
