@@ -8,405 +8,245 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Audiowide&family=Oxanium:wght@400;700&family=Grenze+Gotisch:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* --- REGRA DE OURO PARA RESPONSIVIDADE --- */
-        html {
-            box-sizing: border-box;
-        }
-        *, *:before, *:after {
-            box-sizing: inherit;
-        }
-
+        html { box-sizing: border-box; }
+        *, *:before, *:after { box-sizing: inherit; }
         body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            background-color: #12121E;
-            color: #F0F0F0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif; margin: 0; background-color: #12121E;
+            color: #F0F0F0; display: flex; flex-direction: column; align-items: center;
+            min-height: 100vh; overflow-x: hidden;
         }
-
-        /* --- MENU DE NAVEGAÇÃO --- */
+        main {
+            width: 100%; flex-grow: 1; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; padding: 4rem 1.5rem; gap: 5rem;
+        }
         .navbar {
-            width: 100%;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            background-color: #1A1A2E;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            transition: padding 0.4s ease;
+            width: 100%; padding: 1.5rem 2rem; display: flex; justify-content: center;
+            align-items: center; position: fixed; top: 0; left: 0; z-index: 1000;
+            background-color: #1A1A2E; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
-        
-        .navbar.scrolled {
-             padding: 1rem 2rem;
-        }
-        
-        .navbar .nav-links {
-            display: flex;
-            gap: 2.5rem;
-        }
-
+        .navbar .nav-links { display: flex; gap: 2.5rem; }
         .navbar .nav-links a {
-            color: #F0F0F0;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.2rem;
-            position: relative;
-            transition: color 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            color: #F0F0F0; text-decoration: none; font-weight: 500; font-size: 1.2rem;
+            position: relative; transition: color 0.3s; display: flex; align-items: center; gap: 8px;
         }
-
         .navbar .nav-links a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 100%;
-            height: 2px;
-            background-color: #8A2BE2;
-            transform: scaleX(0);
-            transform-origin: center;
-            transition: transform 0.4s ease;
+            content: ''; position: absolute; left: 0; bottom: -5px; width: 100%; height: 2px;
+            background-color: #8A2BE2; transform: scaleX(0); transform-origin: center; transition: transform 0.4s ease;
         }
-
-        .navbar .nav-links a:hover::after {
-            transform: scaleX(1);
-        }
-        .navbar .nav-links a:hover {
-            color: #44CFCB;
-        }
-
-        .navbar .nav-links .active {
-            color: #44CFCB;
-            font-weight: 600;
-        }
-
-        .navbar .nav-links .active::after {
-            background-color: #44CFCB;
-            transform: scaleX(1);
-        }
-        
-        /* --- CABEÇALHO DA PÁGINA --- */
-        .header {
-            width: 100%;
-            padding: 8rem 1.5rem 3rem 1.5rem;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
+        .navbar .nav-links a:hover::after { transform: scaleX(1); }
+        .navbar .nav-links a:hover { color: #44CFCB; }
+        .navbar .nav-links .active { color: #44CFCB; font-weight: 600; }
+        .navbar .nav-links .active::after { background-color: #44CFCB; transform: scaleX(1); }
+        .header { width: 100%; padding: 8rem 1.5rem 1rem 1.5rem; text-align: center; }
         .mission-header h1 {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, #44CFCB, #FFD700);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 10px rgba(68, 207, 203, 0.5);
-            margin: 0;
-            word-break: break-word;
+            font-family: 'Press Start 2P', cursive; font-size: 2.5rem; font-weight: 700;
+            background: linear-gradient(45deg, #44CFCB, #FFD700); -webkit-background-clip: text;
+            background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(68, 207, 203, 0.5); margin: 0; word-break: break-word;
         }
-        
-        .mission-header p {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.2rem;
-            font-style: italic;
-            color: #A0A0A0;
-            margin-top: 0.5rem;
-        }
-
-        /* --- ESTILO DAS SEÇÕES DE CONTEÚDO --- */
+        .mission-header p { font-family: 'Poppins', sans-serif; font-size: 1.2rem; font-style: italic; color: #A0A0A0; margin-top: 0.5rem; }
         .content-section {
-            padding: 2.5rem 1.5rem;
-            max-width: 800px;
-            text-align: center;
-            background-color: #1A1A2E;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-            width: 90%;
-            margin-top: 2rem;
-            opacity: 0;
-            transform: translateY(50px);
+            padding: 2.5rem 1.5rem; max-width: 800px; text-align: center; background-color: #1A1A2E;
+            border-radius: 15px; width: 90%;
+            opacity: 0; transform: translateY(50px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
         }
-
-        .content-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .content-section h2 {
-            font-size: 2.2rem;
-            font-weight: 600;
-            color: #44CFCB;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        .content-section h2 i {
-            color: #FFD700;
-        }
-
-        .content-section p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #A0A0A0;
-            margin-bottom: 0;
-        }
-        .content-section .highlight {
-            color: #FFD700;
-            font-weight: 600;
-        }
-
-        /* --- ESTILO TÍTULO DA GALERIA --- */
+        .content-section.is-visible { opacity: 1; transform: translateY(0); }
+        .content-section h2 { font-size: 2.2rem; font-weight: 600; color: #44CFCB; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .content-section h2 i { color: #FFD700; }
+        .content-section p { font-size: 1.1rem; line-height: 1.8; color: #A0A0A0; margin-bottom: 0; }
+        .content-section .highlight { color: #FFD700; font-weight: 600; }
         .section-title {
-            text-align: center;
-            margin: 6rem 0 3rem 0;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 2rem;
-            background: linear-gradient(90deg, #FFD700, #F0B400, #FFD700);
-            background-size: 200% 100%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shimmer 4s linear infinite, float 3s ease-in-out infinite;
-            word-break: break-word;
+            text-align: center; margin-bottom: 2rem; font-family: 'Press Start 2P', cursive;
+            font-size: 2rem; background: linear-gradient(90deg, #FFD700, #F0B400, #FFD700);
+            background-size: 200% 100%; -webkit-background-clip: text; background-clip: text;
+            -webkit-text-fill-color: transparent; animation: shimmer 4s linear infinite, float 3s ease-in-out infinite; word-break: break-word;
         }
-        
         @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
-
-        /* --- GALERIA DE FOTOS --- */
-        .photo-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            width: 90%;
-            max-width: 1200px;
+        .timeline {
+            position: relative; max-width: 1400px; margin: 0 auto; padding: 40px 1.5rem;
         }
-
-        .photo-gallery img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            opacity: 0;
-            transform: scale(0.9);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        .timeline::after {
+            content: ''; position: absolute; width: 4px; background-color: #44CFCB;
+            top: 0; bottom: 0; left: 50%; margin-left: -2px; box-shadow: 0 0 10px #44CFCB;
         }
-
-        .photo-gallery img.is-visible {
-            opacity: 1;
-            transform: scale(1);
+        .timeline-item {
+            padding: 10px 40px; position: relative; background-color: inherit; width: 50%;
         }
-
-        .photo-gallery img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 15px #44CFCB;
+        .timeline-item::after {
+            content: ''; position: absolute; width: 25px; height: 25px; right: -12.5px;
+            background-color: #12121E; border: 4px solid #FFD700; top: 15px;
+            border-radius: 50%; z-index: 1; box-shadow: 0 0 10px #FFD700;
         }
-
-        /* --- Rodapé --- */
-        footer {
-            margin-top: 5rem;
-            padding: 3rem 2rem 0 2rem;
-            background-color: #1A1A2E;
-            color: #A0A0A0;
-            width: 100%;
-            border-top: 3px solid #8A2BE2;
+        .left { left: 0; }
+        .right { left: 50%; }
+        .right::after { left: -12.5px; }
+        .timeline-content { background-color: transparent; box-shadow: none; padding: 0; }
+        .timeline-content img {
+            width: 100%; height: 250px; object-fit: cover; border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); cursor: zoom-in;
+            opacity: 0; transform: translateY(40px) scale(0.95);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out, box-shadow 0.4s ease;
         }
-        
-        .footer-content {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-bottom: 2rem;
+        .timeline-item.is-visible .timeline-content img { opacity: 1; transform: translateY(0) scale(1); }
+        .timeline-item:hover .timeline-content img { box-shadow: 0 10px 40px rgba(68, 207, 203, 0.4); }
+        .left::before, .right::before { display: none; }
+        .image-zoom-modal {
+            display: none; position: fixed; z-index: 2000; left: 0; top: 0;
+            width: 100%; height: 100%; background-color: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px); justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 0.4s ease;
         }
-        
-        .footer-column {
-            flex: 1;
-            min-width: 250px;
+        .image-zoom-modal.visible { display: flex; opacity: 1; }
+        .image-zoom-modal img {
+            max-width: 90%; max-height: 90vh; border-radius: 10px;
+            transform: scale(0.7); opacity: 0;
+            transition: transform 0.4s ease, opacity 0.4s ease;
         }
-        
-        .footer-column h4 {
-            font-size: 1.5rem;
-            color: #F0F0F0;
-            margin-bottom: 1rem;
-            font-weight: 600;
+        .image-zoom-modal.visible img { transform: scale(1); opacity: 1; }
+        .close-zoom {
+            position: absolute; top: 20px; right: 35px; color: #fff;
+            font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer;
+            text-shadow: 0 0 10px #000;
         }
-        
-        .footer-column p, .footer-column ul a {
-            color: #A0A0A0;
-            line-height: 1.7;
-        }
-        
-        .footer-column ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 0.7rem;
-        }
-        
-        .footer-column ul a {
-            text-decoration: none;
-            transition: color 0.3s ease, padding-left 0.3s ease;
-        }
-
-        .footer-column ul a:hover {
-            color: #44CFCB;
-            padding-left: 5px;
-        }
-        
-        .footer-socials a {
-            font-size: 1.8rem;
-            margin-right: 1rem;
-            color: #A0A0A0;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-        .footer-socials a:hover {
-            color: #44CFCB;
-            transform: scale(1.1);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding: 1.5rem 0;
-            border-top: 1px solid #33334E;
-            margin-top: 2rem;
-            font-size: 0.9rem;
-        }
-
-        /* --- Responsividade --- */
+        footer { padding: 3rem 2rem 0 2rem; background-color: #1A1A2E; color: #A0A0A0; width: 100%; border-top: 3px solid #8A2BE2; }
+        .footer-content { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem; max-width: 1200px; margin: 0 auto; padding-bottom: 2rem; }
+        .footer-column { flex: 1; min-width: 250px; }
+        .footer-column h4 { font-size: 1.5rem; color: #F0F0F0; margin-bottom: 1rem; font-weight: 600; }
+        .footer-column p, .footer-column ul a { color: #A0A0A0; line-height: 1.7; }
+        .footer-column ul { list-style: none; padding: 0; margin: 0; }
+        .footer-column ul li { margin-bottom: 0.7rem; }
+        .footer-column ul a { text-decoration: none; transition: color 0.3s ease, padding-left 0.3s ease; }
+        .footer-column ul a:hover { color: #44CFCB; padding-left: 5px; }
+        .footer-socials a { font-size: 1.8rem; margin-right: 1rem; color: #A0A0A0; transition: color 0.3s ease, transform 0.3s ease; }
+        .footer-socials a:hover { color: #44CFCB; transform: scale(1.1); }
+        .footer-bottom { text-align: center; padding: 1.5rem 0; border-top: 1px solid #33334E; margin-top: 2rem; font-size: 0.9rem; }
         @media (max-width: 768px) {
-            .navbar .nav-links a { font-size: 1rem; }
-            .navbar .nav-links { gap: 1.5rem; }
+            main { justify-content: flex-start; gap: 2rem; padding: 2rem 0;}
+            .header { padding-top: 6rem; padding-bottom: 1rem; }
             .mission-header h1 { font-size: 1.8rem; }
-            .content-section { padding: 2rem 1.5rem; }
             .content-section h2 { font-size: 1.8rem; }
             .section-title { font-size: 1.5rem; }
-            .photo-gallery { gap: 1rem; }
-            .footer-content { flex-direction: column; align-items: center; text-align: center; }
-        }
-        
-        @media (max-width: 480px) {
-            .mission-header h1 { font-size: 1.5rem; }
-            .content-section h2 { font-size: 1.6rem; }
-            .section-title { font-size: 1.3rem; }
+            .timeline { max-width: 95%; }
+            .timeline::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .left::after, .right::after { left: 18px; }
+            .right { left: 0%; }
         }
     </style>
 </head>
 <body>
-
     <nav class="navbar">
         <div class="nav-links">
             <a href="index.html"><i class="fas fa-gem"></i> Produtos</a>
             <a href="sobre.html" class="active"><i class="fas fa-scroll"></i> Sobre Nós</a>
         </div>
     </nav>
-
-    <div class="header">
+    <header class="header">
         <div class="mission-header">
             <h1>Nossa Missão</h1>
             <p>Do Zero ao Herói!</p>
         </div>
-        </div>
-
-    <section id="main-content" class="content-section">
-        <h2><i class="fas fa-star"></i> De Fã para Fã <i class="fas fa-star"></i></h2>
-        <p>A LevelUp3D foi criada por um fã de carteirinha que, cansado do <span class="highlight">"game over"</span> de não encontrar produtos incríveis na cidade e dos preços impossíveis na internet, resolveu dar um **LevelUp!** na cena geek de São Miguel, RN. Somos fãs de tudo que oferecemos e nosso objetivo é transformar a sua paixão em realidade, com itens de qualidade e preço justo. Aqui, é a nossa quest para garantir que você tenha os melhores colecionáveis!</p>
-    </section>
-
-    <h2 class="section-title">Nossa Jornada</h2>
-
-    <div class="photo-gallery">
-        <img src="jose.jpeg" alt="Foto de Produto 1">
-        <img src="josee.jpeg" alt="Foto de Produto 2">
-        <img src="joseee.jpeg" alt="Foto de Produto 3">
-        <img src="joseeee.jpeg" alt="Foto de Produto 4">
-        <img src="joseeeee.jpeg" alt="Foto de Produto 5">
-        <img src="joseeeeee.jpeg" alt="Foto de Produto 6">
-    </div>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-column">
-                <h4>LevelUp3D</h4>
-                <p>Sua imaginação transformada em realidade. Itens colecionáveis e personalizados feitos de Fã para Fã.</p>
-            </div>
-            <div class="footer-column">
-                <h4>Navegação</h4>
-                <ul>
-                    <li><a href="index.html">Produtos</a></li>
-                    <li><a href="sobre.html">Sobre Nós</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Contato</h4>
-                <div class="footer-socials">
-                    <a href="https://wa.me/5584921555670" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://www.instagram.com/levelup3d45" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a>
+    </header>
+    <main>
+        <section class="content-section">
+            <h2><i class="fas fa-star"></i> De Fã para Fã <i class="fas fa-star"></i></h2>
+            <p>A LevelUp3D foi criada por um fã de carteirinha que, cansado do <span class="highlight">"game over"</span> de não encontrar produtos incríveis na cidade e dos preços impossíveis na internet, resolveu dar um **LevelUp!** na cena geek de São Miguel, RN. Somos fãs de tudo que oferecemos e nosso objetivo é transformar a sua paixão em realidade, com itens de qualidade e preço justo. Aqui, é a nossa quest para garantir que você tenha os melhores colecionáveis!</p>
+        </section>
+        <div class="timeline-container">
+            <h2 class="section-title">Nossa Jornada</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <img src="jose.jpeg" alt="Primeira impressora 3D em funcionamento">
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <img src="josee.jpeg" alt="Peça 3D sendo analisada">
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <img src="joseee.jpeg" alt="Várias peças 3D prontas para entrega">
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <img src="joseeee.jpeg" alt="Organização das ferramentas e materiais">
+                    </div>
+                </div>
+                 <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <img src="joseeeee.jpeg" alt="Produto personalizado em destaque">
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <img src="joseeeeee.jpeg" alt="Setup atual com as impressoras 3D">
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            &copy; 2025 LevelUp3D. Todos os direitos reservados.
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column"> <h4>LevelUp3D</h4> <p>Sua imaginação transformada em realidade. Itens colecionáveis e personalizados feitos de Fã para Fã.</p> </div>
+            <div class="footer-column"> <h4>Navegação</h4> <ul> <li><a href="index.html">Produtos</a></li> <li><a href="sobre.html">Sobre Nós</a></li> </ul> </div>
+            <div class="footer-column"> <h4>Contato</h4> <div class="footer-socials"> <a href="https://wa.me/5584921555670" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fab fa-whatsapp"></i></a> <a href="https://www.instagram.com/levelup3d45" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a> </div> </div>
         </div>
+        <div class="footer-bottom"> &copy; 2025 LevelUp3D. Todos os direitos reservados. </div>
     </footer>
+    
+    <div id="imageZoomModal" class="image-zoom-modal">
+        <span class="close-zoom">&times;</span>
+        <img class="modal-content-zoom" id="zoomedImage">
+    </div>
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const navbar = document.querySelector('.navbar');
-            
-            // Efeito de scroll do menu
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) { 
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-
-            // Lógica para animação de entrada dos elementos
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
-                        const childImages = entry.target.querySelectorAll('.photo-gallery img');
-                        if (childImages.length > 0) {
-                            childImages.forEach((img, index) => {
-                                setTimeout(() => {
-                                    img.classList.add('is-visible');
-                                }, index * 150);
-                            });
-                        }
                         observer.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.1 });
-
-            document.querySelectorAll('.content-section, .photo-gallery').forEach(section => {
+            document.querySelectorAll('.content-section, .timeline-item').forEach(section => {
                 observer.observe(section);
             });
+
+            const modal = document.getElementById('imageZoomModal');
+            const modalImg = document.getElementById('zoomedImage');
+            const timelineImages = document.querySelectorAll('.timeline-content img');
+            const closeBtn = document.querySelector('.close-zoom');
+
+            timelineImages.forEach(img => {
+                img.onclick = function(){
+                    modal.style.display = "flex";
+                    modalImg.src = this.src;
+                    setTimeout(() => {
+                        modal.classList.add('visible');
+                    }, 10);
+                }
+            });
+
+            function closeModal() {
+                modal.classList.remove('visible');
+                setTimeout(() => {
+                    modal.style.display = "none";
+                }, 400);
+            }
+            closeBtn.onclick = closeModal;
+            modal.onclick = function(event) {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            }
         });
     </script>
-
 </body>
 </html>
